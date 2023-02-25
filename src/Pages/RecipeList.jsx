@@ -1,16 +1,30 @@
 import { useEffect, useState } from "react";
-import RecipeTable from "../Components/RecipeTable";
+import RecipeCard from "../Components/RecipeCard";
 import Loading from "../Components/Loading";
 
 function RecipeList() {
-  const [data, setData] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
+  const [ingredientSelected, setIngredientSelected] = useState('spaghetti');
   
   useEffect(() => {
     fetch('/api/recipes')
       .then(response => response.json())
-      .then(data => setData(data));
+      .then(data => {
+        console.log(data);
+        setRecipes(data);
+      });
   }, []);
+
+  const handleFilter = async (e) => {
+    setIngredientSelected(e.target.value)
+    console.log(ingredientSelected);
+    const response = await fetch(`/api/filter/?ingredient=${ingredientSelected}`)
+    const data = await response.json();
+    console.log(data);
+    setRecipes(data);
+  };
+
 
   async function getIngredientNames() {
     const response = await fetch('/api/recipes');
@@ -21,16 +35,39 @@ function RecipeList() {
         ingredients.push(ingredient.name);
       });
     });
-    setIngredientNames([...ingredients])
+    setIngredientNames([...new Set(ingredients)]);
   }
-
   getIngredientNames();
+
     
-  if (!data) {
+  if (!recipes) {
     return <Loading />;
   }
 
-  return <RecipeTable recipes={data} ingredientNames={ingredientNames}/>;
+  return (
+    <div className="recipes">
+      <div className="filter">
+              <select 
+              value={ingredientSelected}
+              onChange={(e)=>handleFilter(e)} 
+              placeholder="Filter by ingredient"
+              >
+                {ingredientNames.map((ingredient, index) => (
+                  <option 
+                  key={index}
+                  value={ingredient}
+                  >
+                    {ingredient}
+                    </option>
+                ))}
+              </select>
+      </div>
+      {recipes.map((recipe)=>
+        <RecipeCard recipe={recipe} key={recipe._id}/>
+      )
+      }
+    </div>
+  )
 };
 
 export default RecipeList;
