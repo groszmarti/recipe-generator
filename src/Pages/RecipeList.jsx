@@ -55,7 +55,7 @@ function RecipeList() {
                 {ingredientNames.map((ingredient, index) => (
                   <option 
                   key={index}
-                  value={ingredient}
+                  value={ingredientSelected}
                   >
                     {ingredient}
                     </option>

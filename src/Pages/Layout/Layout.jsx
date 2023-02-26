@@ -9,6 +9,9 @@ const Layout = () => (
         <li className="grow">
           <Link to="/">Recipes</Link>
         </li>
+        <li className="meal-plan">
+          <Link to="/mealplan">Meal plan</Link>
+        </li>
         <li>
           <Link to="/create">
             <button type="button">Create Recipe</button>

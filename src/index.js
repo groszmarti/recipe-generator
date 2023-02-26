@@ -5,9 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
 
-import RecipeCreator from "./Pages/RecipeCreator";
+import RecipeForm from "./Pages/RecipeForm";
 import RecipeUpdater from "./Pages/RecipeUpdater";
 import RecipeList from "./Pages/RecipeList";
+import MealPlan from "./Pages/MealPlan"
 
 import "./index.css";
 
@@ -23,12 +24,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/create",
-        element: <RecipeCreator />,
+        element: <RecipeForm />,
       },
       {
         path: "/update/:id",
         element: <RecipeUpdater />,
       },
+      {
+        path: "/mealplan",
+        element: <MealPlan />
+      }
      
     ],
   },

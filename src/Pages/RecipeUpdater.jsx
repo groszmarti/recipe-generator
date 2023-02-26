@@ -1,4 +1,4 @@
-import RecipeForm from "../Components/RecipeForm"
+import RecipeForm from "./RecipeForm"
 
 
 const RecipeUpdater = () => {
