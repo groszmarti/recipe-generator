@@ -2,39 +2,32 @@ import { useEffect, useState } from "react";
 import RecipeCard from "../Components/RecipeCard";
 import Loading from "../Components/Loading";
 
-
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
-  const [ingredientSelected, setIngredientSelected] = useState('Please select an ingredient');
-  
+  const [ingredientSelected, setIngredientSelected] = useState("");
+
   useEffect(() => {
-    fetch('/api/recipes')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setRecipes(data);
-    });
+    fetch("/api/recipes")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setRecipes(data);
+      });
     getIngredientNames();
   }, []);
 
-  useEffect(() => {
-    handleFilter(ingredientSelected)
-  }, [])
-
-
-  const handleFilter = (selectedIngredient) => {
-    fetch(`/api/filter/?ingredient=${selectedIngredient}`).then((res) => res.json());
-  };
-  
   const handleChange = (e) => {
     setIngredientSelected(e.target.value);
-  }
+    fetch(`/api/filter/?ingredient=${e.target.value}`)
+      .then((res) => res.json())
+      .then((res) => setRecipes(res));
+  };
 
-  console.log(ingredientSelected)
+  console.log(ingredientSelected);
 
   async function getIngredientNames() {
-    const response = await fetch('/api/recipes');
+    const response = await fetch("/api/recipes");
     const recipes = await response.json();
     let ingredients = [];
     recipes.forEach((recipe) => {
@@ -45,36 +38,33 @@ function RecipeList() {
     setIngredientNames([...new Set(ingredients)]);
   }
 
-    
-  if (!recipes || !ingredientSelected) {
+  if (!recipes) {
     return <Loading />;
   }
 
   return (
     <div className="recipes">
       <div className="filter">
-              <select 
-              value={ingredientSelected}
-              onChange={(e)=>handleChange(e)} 
-              placeholder="Filter by ingredient"
-              >
-                <option disabled value="">--Please choose an ingredient--</option>
-                {ingredientNames.map((ingredient, index) => (
-                  <option 
-                  key={index}
-                  value={ingredient}
-                  >
-                    {ingredient}
-                    </option>
-                ))}
-              </select>
+        <select
+          value={ingredientSelected}
+          onChange={(e) => handleChange(e)}
+          placeholder="Filter by ingredient"
+        >
+          <option value="">
+            --Please choose an ingredient--
+          </option>
+          {ingredientNames.map((ingredient, index) => (
+            <option key={index} value={ingredient}>
+              {ingredient}
+            </option>
+          ))}
+        </select>
       </div>
-      {recipes.map((recipe)=>
-        <RecipeCard recipe={recipe} key={recipe._id}/>
-      )
-      }
+      {recipes.map((recipe) => (
+        <RecipeCard recipe={recipe} key={recipe._id} />
+      ))}
     </div>
-  )
-};
+  );
+}
 
 export default RecipeList;

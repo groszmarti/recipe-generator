@@ -13,6 +13,7 @@ const RecipeForm = () => {
       name: recipeName,
       ingredients,
       instructions,
+      createdAt: Date.now()
     };
 
     fetch('/api/recipes/', {
