@@ -19,8 +19,8 @@ function RecipeList() {
   }, []);
 
   useEffect(() => {
-    handleFilter(ingredientSelected).then((res) => setRecipes(res));
-  }, [ingredientSelected])
+    handleFilter(ingredientSelected)
+  }, [])
 
 
   const handleFilter = (selectedIngredient) => {
