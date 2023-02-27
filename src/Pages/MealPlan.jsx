@@ -1,41 +1,120 @@
 import { useState, useEffect } from 'react';
 import Loading from '../Components/Loading';
 
+
 const MealPlan = () => {
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const [recipes, setRecipes] = useState(null);
-  const [recipeNames, setRecipeNames] = useState(null);
-  
+  const [mondayRecipe, setMondayRecipe] = useState(null);
+  const [tuesdayRecipe, setTuesdayRecipe] = useState(null);
+  const [wednesdayRecipe, setWednesdayRecipe] = useState(null);
+  const [thursdayRecipe, setThursdayRecipe] = useState(null);
+  const [fridayRecipe, setFridayRecipe] = useState(null);
+  const [saturdayRecipe, setSaturdayRecipe] = useState(null);
+  const [sundayRecipe, setSundayRecipe] = useState(null);
+
+  const pick = (from) => from[Math.floor(Math.random() * (from.length - 0))];
+
+  const getRandomRecipeMonday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setMondayRecipe(pick(data));
+  }
+
+
+  const getRandomRecipeTuesday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setTuesdayRecipe(pick(data));
+  }
+
+  const getRandomRecipeWednesday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setWednesdayRecipe(pick(data));
+  }
+
+  const getRandomRecipeThursday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setThursdayRecipe(pick(data));
+  }
+
+  const getRandomRecipeFriday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setFridayRecipe(pick(data));
+  }
+
+  const getRandomRecipeSaturday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setSaturdayRecipe(pick(data));
+  }
+
+  const getRandomRecipeSunday = async () => {
+    const res = await fetch('/api/recipes');
+    const data = await res.json();
+    setSundayRecipe(pick(data));
+  }
+
   useEffect(()=> {
-    const getRecipes = async () => {
-      const response = await fetch('/api/recipes');
-      const data = await response.json();
-      setRecipes(data);
-      console.log(data);
-      let arr = [];
-      data.map((recipe)=> arr.push(recipe.name));
-      setRecipeNames(arr);
-      console.log(recipeNames);
-    };
-    getRecipes();
+    getRandomRecipeMonday();
+    console.log(mondayRecipe);
+    getRandomRecipeTuesday();
+    getRandomRecipeWednesday();
+    getRandomRecipeThursday();
+    getRandomRecipeFriday();
+    getRandomRecipeSaturday();
+    getRandomRecipeSunday();
   }, []);
 
-
-
-  if (!recipes) {
+  if (!mondayRecipe || !tuesdayRecipe || !wednesdayRecipe || thursdayRecipe || fridayRecipe || saturdayRecipe || sundayRecipe) {
     return <Loading />
   }
 
   return ( 
     <div className="days">
-      {days.map((day, index) =>
-        <div>
-          <p key={index}><strong>{day}</strong></p>
-          <p>{recipeNames}</p>
+        <div className="recipe-days">
+          <p><strong>Monday</strong></p>
+          <p>{mondayRecipe.name}</p>
           <button>Go to recipe</button>
           <button>Pick another recipe</button>
           </div>
-      )}
+          <div className="recipe-days">
+          <p><strong>Tuesday</strong></p>
+          <p>{tuesdayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
+          <div className="recipe-days">
+          <p><strong>Wednesday</strong></p>
+          <p>{wednesdayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
+          <div className="recipe-days">
+          <p><strong>Thursday</strong></p>
+          <p>{thursdayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
+          <div className="recipe-days">
+          <p><strong>Friday</strong></p>
+          <p>{fridayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
+          <div className="recipe-days">
+          <p><strong>Saturday</strong></p>
+          <p>{saturdayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
+          <div className="recipe-days">
+          <p><strong>Sunday</strong></p>
+          <p>{sundayRecipe.name}</p>
+          <button>Go to recipe</button>
+          <button>Pick another recipe</button>
+          </div>
       </div>
    );
 }
