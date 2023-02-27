@@ -2,29 +2,36 @@ import { useEffect, useState } from "react";
 import RecipeCard from "../Components/RecipeCard";
 import Loading from "../Components/Loading";
 
+
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
-  const [ingredientSelected, setIngredientSelected] = useState('spaghetti');
+  const [ingredientSelected, setIngredientSelected] = useState('Please select an ingredient');
   
   useEffect(() => {
     fetch('/api/recipes')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setRecipes(data);
-      });
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setRecipes(data);
+    });
+    getIngredientNames();
   }, []);
 
-  const handleFilter = async (e) => {
-    setIngredientSelected(e.target.value)
-    console.log(ingredientSelected);
-    const response = await fetch(`/api/filter/?ingredient=${ingredientSelected}`)
-    const data = await response.json();
-    console.log(data);
-    setRecipes(data);
-  };
+  useEffect(() => {
+    handleFilter(ingredientSelected).then((res) => setRecipes(res));
+  }, [ingredientSelected])
 
+
+  const handleFilter = (selectedIngredient) => {
+    fetch(`/api/filter/?ingredient=${selectedIngredient}`).then((res) => res.json());
+  };
+  
+  const handleChange = (e) => {
+    setIngredientSelected(e.target.value);
+  }
+
+  console.log(ingredientSelected)
 
   async function getIngredientNames() {
     const response = await fetch('/api/recipes');
@@ -37,10 +44,9 @@ function RecipeList() {
     });
     setIngredientNames([...new Set(ingredients)]);
   }
-  getIngredientNames();
 
     
-  if (!recipes) {
+  if (!recipes || !ingredientSelected) {
     return <Loading />;
   }
 
@@ -49,13 +55,14 @@ function RecipeList() {
       <div className="filter">
               <select 
               value={ingredientSelected}
-              onChange={(e)=>handleFilter(e)} 
+              onChange={(e)=>handleChange(e)} 
               placeholder="Filter by ingredient"
               >
+                <option disabled value="">--Please choose an ingredient--</option>
                 {ingredientNames.map((ingredient, index) => (
                   <option 
                   key={index}
-                  value={ingredientSelected}
+                  value={ingredient}
                   >
                     {ingredient}
                     </option>
