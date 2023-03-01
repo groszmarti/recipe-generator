@@ -19,9 +19,13 @@ function RecipeList() {
 
   const handleChange = (e) => {
     setIngredientSelected(e.target.value);
-    fetch(`/api/filter/?ingredient=${e.target.value}`)
+    e.target.value === ""
+    ? fetch("/api/recipes")
       .then((res) => res.json())
-      .then((res) => setRecipes(res));
+      .then((data) => setRecipes(data))
+    : fetch(`/api/filter/?ingredient=${e.target.value}`)
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
   };
 
   console.log(ingredientSelected);

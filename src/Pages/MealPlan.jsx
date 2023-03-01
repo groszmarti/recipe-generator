@@ -13,61 +13,47 @@ const MealPlan = () => {
 
   const pick = (from) => from[Math.floor(Math.random() * (from.length - 0))];
 
-  const getRandomRecipeMonday = async () => {
+  const getRandomRecipe = async (day) => {
     const res = await fetch('/api/recipes');
     const data = await res.json();
-    setMondayRecipe(pick(data));
-  }
-
-
-  const getRandomRecipeTuesday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setTuesdayRecipe(pick(data));
-  }
-
-  const getRandomRecipeWednesday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setWednesdayRecipe(pick(data));
-  }
-
-  const getRandomRecipeThursday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setThursdayRecipe(pick(data));
-  }
-
-  const getRandomRecipeFriday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setFridayRecipe(pick(data));
-  }
-
-  const getRandomRecipeSaturday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setSaturdayRecipe(pick(data));
-  }
-
-  const getRandomRecipeSunday = async () => {
-    const res = await fetch('/api/recipes');
-    const data = await res.json();
-    setSundayRecipe(pick(data));
+    if (day === 'Monday') {
+      setMondayRecipe(pick(data));
+    } else if (day === 'Tuesday') {
+      setTuesdayRecipe(pick(data));
+    } else if (day === 'Wednesday') {
+      setWednesdayRecipe(pick(data));
+    } else if (day === 'Thursday') {
+      setThursdayRecipe(pick(data));
+    } else if (day === 'Friday') {
+      setFridayRecipe(pick(data));
+    } else if (day === 'Saturday') {
+      setSaturdayRecipe(pick(data));
+    } else if (day === 'Sunday') {
+      setSundayRecipe(pick(data));
+    }
   }
 
   useEffect(()=> {
-    getRandomRecipeMonday();
-    console.log(mondayRecipe);
-    getRandomRecipeTuesday();
-    getRandomRecipeWednesday();
-    getRandomRecipeThursday();
-    getRandomRecipeFriday();
-    getRandomRecipeSaturday();
-    getRandomRecipeSunday();
+    getRandomRecipe('Monday');
+    getRandomRecipe('Tuesday');
+    getRandomRecipe('Wednesday');
+    getRandomRecipe('Thursday');
+    getRandomRecipe('Friday');
+    getRandomRecipe('Saturday');
+    getRandomRecipe('Sunday');
   }, []);
 
-  if (!mondayRecipe || !tuesdayRecipe || !wednesdayRecipe || thursdayRecipe || fridayRecipe || saturdayRecipe || sundayRecipe) {
+  const handleRandomRecipe = (day) => {
+    getRandomRecipe(day)
+  }
+
+  if (!mondayRecipe 
+    || !tuesdayRecipe 
+    || !wednesdayRecipe 
+    || !thursdayRecipe 
+    || !fridayRecipe 
+    || !saturdayRecipe 
+    || !sundayRecipe) {
     return <Loading />
   }
 
@@ -77,43 +63,43 @@ const MealPlan = () => {
           <p><strong>Monday</strong></p>
           <p>{mondayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Monday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Tuesday</strong></p>
           <p>{tuesdayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Tuesday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Wednesday</strong></p>
           <p>{wednesdayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Wednesday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Thursday</strong></p>
           <p>{thursdayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Thursday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Friday</strong></p>
           <p>{fridayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Friday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Saturday</strong></p>
           <p>{saturdayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Saturday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">
           <p><strong>Sunday</strong></p>
           <p>{sundayRecipe.name}</p>
           <button>Go to recipe</button>
-          <button>Pick another recipe</button>
+          <button onClick={()=>handleRandomRecipe('Sunday')}>Pick another recipe</button>
           </div>
       </div>
    );
