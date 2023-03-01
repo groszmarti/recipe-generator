@@ -1,8 +1,27 @@
 import "../index.css";
-import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import Loading from "./Loading";
 
-const RecipeCard = ({ recipe, onDelete }) => {
-  
+const OneRecipeCard = () => {
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      const res = await fetch(`/api/recipes/${id}`);
+      const data = await res.json();
+      setRecipe(data);
+    }
+    fetchRecipe()
+  }, [])
+
+  console.log(recipe);
+
+  if (!recipe) {
+    return <Loading />
+  }
+
   return (
       <div className="recipe-details">
         <h4>{recipe.name}</h4><br></br>
@@ -15,12 +34,8 @@ const RecipeCard = ({ recipe, onDelete }) => {
         </ul>
         <p><strong>Instructions:</strong><br></br>
         {recipe.instructions}</p>
-        <Link to={`/update/${recipe._id}`}>
-        <button>Update</button>
-        </Link>
-        <button onClick={() => onDelete(recipe._id)}>Delete</button>
       </div>
   )
 };
 
-export default RecipeCard;
+export default OneRecipeCard;

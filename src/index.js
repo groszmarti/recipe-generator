@@ -9,6 +9,7 @@ import RecipeForm from "./Pages/RecipeForm";
 import RecipeUpdater from "./Pages/RecipeUpdater";
 import RecipeList from "./Pages/RecipeList";
 import MealPlan from "./Pages/MealPlan"
+import OneRecipeCard from "./Components/RecipeCard";
 
 import "./index.css";
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/mealplan",
         element: <MealPlan />
+      },
+      {
+        path: "/recipes/:id",
+        element: <OneRecipeCard />
       }
      
     ],

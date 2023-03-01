@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import Loading from '../Components/Loading';
-
 
 const MealPlan = () => {
   const [mondayRecipe, setMondayRecipe] = useState(null);
@@ -47,6 +47,7 @@ const MealPlan = () => {
     getRandomRecipe(day)
   }
 
+
   if (!mondayRecipe 
     || !tuesdayRecipe 
     || !wednesdayRecipe 
@@ -62,7 +63,9 @@ const MealPlan = () => {
         <div className="recipe-days">
           <p><strong>Monday</strong></p>
           <p>{mondayRecipe.name}</p>
+          <Link to={`/recipes/${mondayRecipe._id}`}>
           <button>Go to recipe</button>
+          </Link>
           <button onClick={()=>handleRandomRecipe('Monday')}>Pick another recipe</button>
           </div>
           <div className="recipe-days">

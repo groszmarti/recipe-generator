@@ -2,10 +2,32 @@ import { useEffect, useState } from "react";
 import RecipeCard from "../Components/RecipeCard";
 import Loading from "../Components/Loading";
 
+const deleteRecipe = (id) => {
+  return fetch(`/api/recipes/${id}`, { method: "DELETE" }).then((res) =>
+    res.json()
+  );
+};
+
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([]);
   const [ingredientSelected, setIngredientSelected] = useState("");
+
+  const handleDelete = (id) => {
+    const confirm = window.confirm('Are you sure you want to delete?');
+
+    if(confirm) {
+      deleteRecipe(id)
+      getIngredientNames()
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+
+    setRecipes((recipes) => {
+      return recipes.filter((recipe) => recipe._id !== id);
+    });
+  };
 
   useEffect(() => {
     fetch("/api/recipes")
@@ -42,6 +64,7 @@ function RecipeList() {
     setIngredientNames([...new Set(ingredients)]);
   }
 
+
   if (!recipes) {
     return <Loading />;
   }
@@ -65,7 +88,7 @@ function RecipeList() {
         </select>
       </div>
       {recipes.map((recipe) => (
-        <RecipeCard recipe={recipe} key={recipe._id} />
+        <RecipeCard recipe={recipe} key={recipe._id} onDelete={handleDelete}/>
       ))}
     </div>
   );
