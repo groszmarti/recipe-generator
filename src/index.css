@@ -12,13 +12,24 @@ code {
     monospace;
 }
 
+.allrecipes {
+  display:flex;
+  justify-content: center;
+}
+
 .recipe-details {
+  max-width: 800px;
   background-color: #fff;
-  border: 2px solid #ccc;
+  border: 2px solid #3168c7;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 20px;
   padding: 20px;
+}
+
+.image {
+  display: grid;
+  grid-template-columns: 1fr 1fr
 }
 
 .recipe-details h4 {
@@ -88,6 +99,10 @@ button {
   transition: background-color 0.2s ease;
 }
 
+.buttons {
+  text-align:center
+}
+
 button:hover {
   background-color: #005fa3;
 }
@@ -103,5 +118,28 @@ button:hover {
 
 .add-ingredient button {
   margin-left: auto;
+}
+
+.recipe-randomizer {
+  display: grid;
+  grid-template-columns: 400px auto;
+  justify-items: center;
+}
+
+.days {
+  justify-items: center;
+}
+
+.shopping-list {
+  justify-items: center;
+}
+
+.recipe-days>p {
+  font-size:20px
+}
+
+.recipeForm {
+  display:flex;
+  justify-content:flex-start
 }
 

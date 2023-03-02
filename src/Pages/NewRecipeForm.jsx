@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../index.css';
 
-const RecipeForm = () => {
+const NewRecipeForm = ( {onCancel, disabled} ) => {
   const [recipeName, setRecipeName] = useState('');
   const [ingredients, setIngredients] = useState([{ name: '', quantity: '' }]);
   const [instructions, setInstructions] = useState('');
+  const [image, setImage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +14,7 @@ const RecipeForm = () => {
       name: recipeName,
       ingredients,
       instructions,
+      image,
       createdAt: Date.now()
     };
 
@@ -29,6 +31,7 @@ const RecipeForm = () => {
         setRecipeName('');
         setIngredients([{ name: '', quantity: '' }]);
         setInstructions('');
+        setImage('');
       })
       .catch((error) => {
         console.error('Error creating recipe:', error);
@@ -89,9 +92,18 @@ const RecipeForm = () => {
           onChange={(event) => setInstructions(event.target.value)}
         />
       </div>
-      <button type="submit">Submit</button>
+      <div>
+        <label htmlFor="image">Image:</label>
+        <input
+          id="image"
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
+        />
+      </div>
+      <button type="submit" disabled={disabled}>Submit</button>
+      <button onCancel={onCancel}>Cancel</button>
     </form>
   );
 };
 
-export default RecipeForm;
+export default NewRecipeForm;

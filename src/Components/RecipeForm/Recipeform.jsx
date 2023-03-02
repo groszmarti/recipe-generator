@@ -15,9 +15,7 @@ const RecipeForm = ({ onSave, disabled, recipe, onCancel }) => {
 
   return (
     <form className="RecipeForm" onSubmit={onSubmit}>
-      {recipe && (
-        <input type="hidden" name="_id" defaultValue={recipe._id} />
-      )}
+      {recipe && <input type="hidden" name="_id" defaultValue={recipe._id} />}
 
       <div className="control">
         <label htmlFor="name">Name:</label>
@@ -30,19 +28,37 @@ const RecipeForm = ({ onSave, disabled, recipe, onCancel }) => {
 
       <div className="control">
         <label htmlFor="ingredients">Ingredients:</label>
-        <input
-          defaultValue={recipe ? recipe.ingredients : null}
-          name="ingredients"
-          id="ingredients"
-        />
+        {recipe.ingredients.map((ingredient) => (
+          <div key={ingredient._id}>
+            <input
+              defaultValue={ingredient ? ingredient.quantity : null}
+              name="ingredientQuantity"
+              id="ingredientQuantity"
+            />
+            <input
+              defaultValue={ingredient ? ingredient.name : null}
+              name="ingredientName"
+              id="ingredientName"
+            />
+          </div>
+        ))}
       </div>
 
       <div className="control">
         <label htmlFor="instructions">Instructions:</label>
-        <input
+        <textarea
           defaultValue={recipe ? recipe.instructions : null}
           name="instructions"
           id="instructions"
+        />
+      </div>
+
+      <div className="control">
+        <label htmlFor="image">Image:</label>
+        <textarea
+          defaultValue={recipe ? recipe.image : null}
+          name="image"
+          id="image"
         />
       </div>
 
@@ -50,7 +66,7 @@ const RecipeForm = ({ onSave, disabled, recipe, onCancel }) => {
         <button type="submit" disabled={disabled}>
           {recipe ? "Update Recipe" : "Create Recipe"}
         </button>
-
+        <br></br>
         <button type="button" onClick={onCancel}>
           Cancel
         </button>

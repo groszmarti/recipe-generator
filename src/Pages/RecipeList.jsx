@@ -70,6 +70,7 @@ function RecipeList() {
   }
 
   return (
+    <div className="allrecipes">
     <div className="recipes">
       <div className="filter">
         <select
@@ -87,9 +88,11 @@ function RecipeList() {
           ))}
         </select>
       </div>
+      <br></br>
       {recipes.map((recipe) => (
         <RecipeCard recipe={recipe} key={recipe._id} onDelete={handleDelete}/>
       ))}
+    </div>
     </div>
   );
 }
