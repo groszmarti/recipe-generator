@@ -12,7 +12,7 @@ const Layout = () => (
         <li className="grow">
           <Link to="/mealplan">Meal plan</Link>
         </li>
-        <li>
+        <li className="grow">
           <Link to="/create">
             <button type="button">Add New Recipe</button>
           </Link>

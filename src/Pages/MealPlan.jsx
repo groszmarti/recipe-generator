@@ -84,7 +84,6 @@ const MealPlan = () => {
   }
 
   return (
-    <div className="allrecipes">
     <div className="recipe-randomizer">
       <div className="days">
         <div className="recipe-days">
@@ -210,7 +209,6 @@ const MealPlan = () => {
           </ul>
         ))}
       </div>
-    </div>
     </div>
   );
 };
