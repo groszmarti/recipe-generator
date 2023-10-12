@@ -35,7 +35,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="/src/images/meal_planner_app_screenshot.png" width="400" height="600"> 
+<img src="/src/images/meal_planner_app_screenshot.png" width="800" height="600"> 
 
 Welcome to Your Culinary Adventure!
 
