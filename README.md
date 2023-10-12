@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="images\meal_planner_logo.png" alt="logo" width="80" height="80">
+    <img src="images//meal_planner_logo.png" alt="logo" width="80" height="80">
 
   <h3 align="center">Random Meal Planner App</h3>
 
@@ -35,24 +35,24 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="images\meal_planner_app_screenshot.png" width="160" height="80"> 
+<img src="images//meal_planner_app_screenshot.png" width="160" height="80"> 
 
 Welcome to Your Culinary Adventure!
 
-What The App Offers:
+<b>What The App Offers:</b>
 
 Dive into the world of effortless meal planning and culinary creativity with this MERN stack application. Here's what makes it stand out:
 
-1. Recipe Collection:
+1. <b>Recipe Collection:</b>
 Discover exciting recipes with a simple click. Endless culinary inspiration is just a button away. 
 
-2. Personalized Meal Planning:
+2. <b>Personalized Meal Planning:</b>
 Craft your weekly meal plan effortlessly. Swap recipes, randomize again, and tailor your plan to your taste. Your customized menu is just a few clicks away.
 
-3. Smart Shopping List:
+3. <b>Smart Shopping List:</b>
 No more forgotten ingredients. Create a shopping list instantly based on your finalized meal plan. Efficient, convenient, and ensuring you have everything you need.
 
-4. Customizable Recipe Collection:
+4. <b>Customizable Recipe Collection:</b>
 Add, remove, and edit your recipes. 
 
 Embrace the joy of cooking without the hassle of planning. Let the Random Recipe Generator and Meal Planner transform your kitchen experience. Happy cooking! 🍽️✨
@@ -77,7 +77,7 @@ Embrace the joy of cooking without the hassle of planning. Let the Random Recipe
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 ### Installation
 
@@ -110,7 +110,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Home Screen:
+<b>Home Screen:</b>
 
 Explore the intuitive home screen featuring the Recipe Collection.
 
@@ -119,7 +119,7 @@ Click on the `Please choose an ingredient` dropdown menu to filter the recipes b
 Add new recipes, edit existing ones, or remove recipes from your collection.
 
 
-Meal Planning:
+<b>Meal Planning:</b>
 
 Click on the `Meal Plan` button to navigate to your weekly menu.
 A randomly chosen recipe is generated to specific days of the week.
@@ -127,7 +127,7 @@ Easily swap recipes by clicking on the `Pick another recipe` button. Randomize t
 
 Click on the `Go to recipe` button to open the Recipe Card of the chosen recipe.
 
-Shopping List:
+<b>Shopping List:</b>
 
 Once you are satisfied with your weekly meal plan, click on the `Create shopping list` button.
 Review the automatically generated shopping list based on your chosen recipes.
