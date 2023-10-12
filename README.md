@@ -1,70 +1,170 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+    <img src="https://imgur.com/a/eTKEO74" width="80" height="80">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Random Meal Planner App</h3>
 
-## Available Scripts
+  <p align="center">
+    Stress-free dining made easy! Bon appétit!
+    <br/>
+    <br/>
+    <br/>
+</div>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+        <a href="#about-the-project">About The Project</a>
+        <ul>
+            <li><a href="#built-with">Built With</a></li>
+        </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ol>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</details>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[![Random Meal Planner][product-screenshot]](https://imgur.com/a/eTKEO74)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Welcome to Your Culinary Adventure!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+What The App Offers:
 
-### `npm run eject`
+Dive into the world of effortless meal planning and culinary creativity with this MERN stack application. Here's what makes it stand out:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Recipe Collection:
+Discover exciting recipes with a simple click. Endless culinary inspiration is just a button away. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Personalized Meal Planning:
+Craft your weekly meal plan effortlessly. Swap recipes, randomize again, and tailor your plan to your taste. Your customized menu is just a few clicks away.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Smart Shopping List:
+No more forgotten ingredients. Create a shopping list instantly based on your finalized meal plan. Efficient, convenient, and ensuring you have everything you need.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Customizable Recipe Collection:
+Add, remove, and edit your recipes. 
 
-## Learn More
+Embrace the joy of cooking without the hassle of planning. Let the Random Recipe Generator and Meal Planner transform your kitchen experience. Happy cooking! 🍽️✨
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Built With
 
-### Analyzing the Bundle Size
+* MongoDB
+* Express.js
+* React.js
+* Nodejs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<!-- GETTING STARTED -->
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To get a local copy up and running follow these simple example steps.
 
-### `npm run build` fails to minify
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repo
+   ```sh
+   git clone git@github.com:groszmarti/recipe-generator.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start server
+   ```sh
+   npm run devStart
+   ```
+4. Navigate to `client` folder
+   ```sh
+   cd .\client\
+   ```
+5. Start React app
+   ```sh
+   npm run start
+   ```
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Home Screen:
+
+Explore the intuitive home screen featuring the Recipe Collection.
+
+Click on the `Please choose an ingredient` dropdown menu to filter the recipes by ingredient. By choosing the first item in the list (`Please choose an ingredient`), the filter is cleared and all available recipes are displayed.
+
+Add new recipes, edit existing ones, or remove recipes from your collection.
+
+
+Meal Planning:
+
+Click on the `Meal Plan` button to navigate to your weekly menu.
+A randomly chosen recipe is generated to specific days of the week.
+Easily swap recipes by clicking on the `Pick another recipe` button. Randomize the entire weekly meal plan if you want more variety.
+
+Click on the `Go to recipe` button to open the Recipe Card of the chosen recipe.
+
+Shopping List:
+
+Once you are satisfied with your weekly meal plan, click on the `Create shopping list` button.
+Review the automatically generated shopping list based on your chosen recipes.
+
+
+Contribute your favorite recipes to the community for others to enjoy.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add Changelog
+- [x] Add back to top links
+- [ ] Add Additional Templates w/ Examples
+- [ ] Add "components" document to easily copy & paste sections of the readme
+- [ ] Multi-language Support
+    - [ ] Chinese
+    - [ ] Spanish
+
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Márta Grósz - (www.linkedin.com/in/marta-grosz) - grosz.marti@gmail.com
+
+Project Link: [https://github.com/groszmarti/recipe-generator](https://github.com/groszmarti/recipe-generator)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
