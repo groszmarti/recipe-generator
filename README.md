@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://imgur.com/a/eTKEO74" width="80" height="80">
+    <img src="images\meal_planner_logo.png" alt="logo" width="80" height="80">
 
   <h3 align="center">Random Meal Planner App</h3>
 
@@ -35,7 +35,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Random Meal Planner][product-screenshot]](https://imgur.com/a/eTKEO74)
+<img src="images\meal_planner_app_screenshot.png" width="160" height="80"> 
 
 Welcome to Your Culinary Adventure!
 
